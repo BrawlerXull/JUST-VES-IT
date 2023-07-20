@@ -59,10 +59,7 @@ class _LandingPageState extends State<LandingPage> {
               color: kAuthThemeColor,
               textColor: Colors.white,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => SignupPage()),
-                );
+                Get.toNamed("/signup");
               },
             ),
           ),
@@ -73,10 +70,7 @@ class _LandingPageState extends State<LandingPage> {
               text: 'Log In',
               textColor: kAuthThemeColor,
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (_) => LoginPage()),
-                );
+                Get.toNamed("/login");
               },
             ),
           ),
