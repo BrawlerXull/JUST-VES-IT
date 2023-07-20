@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:get/instance_manager.dart';
 import 'package:get/route_manager.dart';
 import 'package:justvesit/constants/Constants.dart';
-import 'package:justvesit/screens/loginpage/view/LoginPage.dart';
-import 'package:justvesit/screens/signuppage/view/SignupPage.dart';
 import 'package:justvesit/widgets/RoundedButton.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -55,11 +50,11 @@ class _LandingPageState extends State<LandingPage> {
           Container(
             width: MediaQuery.of(context).size.width * 0.75,
             child: RoundButton(
-              text: 'Sign Up',
+              text: 'Admin Login',
               color: kAuthThemeColor,
               textColor: Colors.white,
               onPressed: () {
-                Get.toNamed("/signup");
+                Get.toNamed("/adminlogin");
               },
             ),
           ),
@@ -67,10 +62,10 @@ class _LandingPageState extends State<LandingPage> {
             width: MediaQuery.of(context).size.width * 0.75,
             child: RoundButton(
               color: Colors.white,
-              text: 'Log In',
+              text: 'Guest Login',
               textColor: kAuthThemeColor,
               onPressed: () {
-                Get.toNamed("/login");
+                Get.toNamed("/guestlogin");
               },
             ),
           ),

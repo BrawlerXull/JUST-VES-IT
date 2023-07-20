@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:justvesit/constants/Routes.dart';
-import 'package:justvesit/screens/LandingPage/view/LandingPage.dart';
-import 'package:justvesit/screens/loginpage/view/LoginPage.dart';
-import 'package:justvesit/screens/signuppage/view/SignupPage.dart';
+import 'package:justvesit/screens/AuthPages/LandingPage/view/LandingPage.dart';
 
 void main() {
   runApp(const MyApp());

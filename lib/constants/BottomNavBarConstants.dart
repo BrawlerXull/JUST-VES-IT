@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:justvesit/screens/InnerPages/HomePage/view/HomePage.dart';
 
 List<GButton> tabs = const [
   GButton(
@@ -21,9 +22,7 @@ List<GButton> tabs = const [
 ];
 
 List<Widget> bottomNavScreens = const [
-  Text(
-    'Home',
-  ),
+  HomePage(),
   Text(
     'Likes',
   ),
