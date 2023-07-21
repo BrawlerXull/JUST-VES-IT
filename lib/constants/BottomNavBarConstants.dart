@@ -13,10 +13,6 @@ List<GButton> tabs = const [
     text: 'Likes',
   ),
   GButton(
-    icon: Icons.search,
-    text: 'Search',
-  ),
-  GButton(
     icon: Icons.person,
     text: 'Profile',
   ),
@@ -26,9 +22,6 @@ List<Widget> bottomNavScreens = const [
   HomePage(),
   Text(
     'Likes',
-  ),
-  Text(
-    'Search',
   ),
   ProfilePage(),
 ];

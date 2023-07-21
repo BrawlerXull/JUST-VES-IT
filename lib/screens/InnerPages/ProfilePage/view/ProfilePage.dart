@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
+import 'package:justvesit/widgets/ProfilePageInfoWidgets.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -36,7 +37,9 @@ class _ProfilePageState extends State<ProfilePage> {
                       color: Color.fromARGB(255, 81, 79, 79),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(40.0),
-                          topRight: Radius.circular(40)),
+                          topRight: Radius.circular(40),
+                          bottomLeft: Radius.circular(40),
+                          bottomRight: Radius.circular(40)),
                     ),
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),
@@ -50,8 +53,8 @@ class _ProfilePageState extends State<ProfilePage> {
                           Align(
                             child: Text(
                               globalController.name.value,
-                              style:
-                                  TextStyle(color: Colors.blue, fontSize: 30),
+                              style: const TextStyle(
+                                  color: Colors.blue, fontSize: 30),
                             ),
                           ),
                           ProfilePageInfoWidgets(
@@ -74,6 +77,9 @@ class _ProfilePageState extends State<ProfilePage> {
                             title: "Gender",
                             info: globalController.gender.value,
                           ),
+                          const SizedBox(
+                            height: 40,
+                          ),
                         ],
                       ),
                     ),
@@ -84,34 +90,6 @@ class _ProfilePageState extends State<ProfilePage> {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ProfilePageInfoWidgets extends StatelessWidget {
-  final String title;
-  final String info;
-
-  const ProfilePageInfoWidgets({required this.title, required this.info});
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          title,
-          style: const TextStyle(
-              color: Color.fromARGB(153, 149, 139, 139), fontSize: 20),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Text(
-          info,
-          style: TextStyle(color: Colors.white60, fontSize: 15),
-        ),
-      ],
     );
   }
 }
