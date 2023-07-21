@@ -18,7 +18,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: bottomNavScreens[_controller.selectedIndex.value],
+        child: Obx(() => bottomNavScreens[_controller.selectedIndex.value]),
       ),
       backgroundColor: kBGColor,
       bottomNavigationBar: GNav(

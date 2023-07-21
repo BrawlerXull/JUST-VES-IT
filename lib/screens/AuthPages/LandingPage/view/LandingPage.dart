@@ -25,7 +25,7 @@ class _LandingPageState extends State<LandingPage> {
           ),
           Align(
             child: SvgPicture.asset(
-              "assets/icons/grad_cap.svg",
+              gradCap,
               height: 150.0,
             ),
           ),

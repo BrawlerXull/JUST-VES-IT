@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:justvesit/screens/InnerPages/HomePage/view/HomePage.dart';
+import 'package:justvesit/screens/InnerPages/ProfilePage/view/ProfilePage.dart';
 
 List<GButton> tabs = const [
   GButton(
@@ -29,7 +30,5 @@ List<Widget> bottomNavScreens = const [
   Text(
     'Search',
   ),
-  Text(
-    'Profile',
-  ),
+  ProfilePage(),
 ];

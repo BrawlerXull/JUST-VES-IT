@@ -4,7 +4,7 @@ import 'package:justvesit/screens/AuthPages/adminloginpage/view/AdminLoginPage.d
 import 'package:justvesit/screens/AuthPages/loginpage/view/LoginPage.dart';
 import 'package:justvesit/screens/InnerPages/MainPage/view/MainPage.dart';
 
-String initialPage = "/landing";
+String initialPage = "/mainpage";
 
 List<GetPage> pages = [
   GetPage(
