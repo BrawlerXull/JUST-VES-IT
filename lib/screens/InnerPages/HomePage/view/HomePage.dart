@@ -223,7 +223,10 @@ class _HomePageState extends State<HomePage> {
                                           homePageController.subject.value,
                                       task: homePageController.subject.value);
                                   UpcomingTaskData.tasks.add(taskData);
-                                  print(UpcomingTaskData.tasks.length);
+                                  homePageController.subject.value = "";
+                                  homePageController.subject.value = "";
+                                  homePageController.date.value =
+                                      DateTime.now();
                                 },
                                 style: ButtonStyle(
                                   backgroundColor:

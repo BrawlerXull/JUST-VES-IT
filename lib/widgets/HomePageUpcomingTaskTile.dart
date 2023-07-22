@@ -22,7 +22,7 @@ class HomePageUpcomingTaskTile extends StatefulWidget {
 class _HomePageUpcomingTaskTileState extends State<HomePageUpcomingTaskTile> {
   @override
   Widget build(BuildContext context) {
-    final DateFormat dateFormat = DateFormat('EEEE, h:mm a');
+    final DateFormat dateFormat = DateFormat('EEEE, d MMMM');
     return Container(
       child: Row(
         children: [

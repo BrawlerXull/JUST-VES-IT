@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:justvesit/constants/Constants.dart';
 
 class ProfilePageInfoWidgets extends StatelessWidget {
   final String title;
@@ -16,7 +17,8 @@ class ProfilePageInfoWidgets extends StatelessWidget {
         ),
         Text(
           title,
-          style: const TextStyle(color: Colors.black, fontSize: 20),
+          style: const TextStyle(
+              color: Color.fromARGB(255, 241, 162, 255), fontSize: 20),
         ),
         const SizedBox(
           height: 10,
