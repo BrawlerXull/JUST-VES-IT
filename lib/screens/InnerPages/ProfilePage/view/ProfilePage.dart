@@ -58,6 +58,10 @@ class _ProfilePageState extends State<ProfilePage> {
                             ),
                           ),
                           ProfilePageInfoWidgets(
+                            title: "Name",
+                            info: globalController.name.value,
+                          ),
+                          ProfilePageInfoWidgets(
                             title: "Email",
                             info: globalController.email.value,
                           ),

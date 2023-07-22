@@ -5,6 +5,7 @@ import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/constants/UpcomingTaskData.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/InnerPages/MainPage/controller/MainPageController.dart';
+import 'package:justvesit/widgets/CustomTextFormField.dart';
 import 'package:justvesit/widgets/HomePageUpcomingTaskTile.dart';
 
 class HomePage extends StatefulWidget {
@@ -63,8 +64,8 @@ class _HomePageState extends State<HomePage> {
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(40.0),
                         topRight: Radius.circular(40),
-                        bottomLeft: Radius.circular(20.0),
-                        bottomRight: Radius.circular(20),
+                        bottomLeft: Radius.circular(30.0),
+                        bottomRight: Radius.circular(30),
                       ),
                     ),
                     child: Padding(
@@ -125,6 +126,81 @@ class _HomePageState extends State<HomePage> {
                 ),
               ],
             ),
+            SizedBox(
+              height: Get.height * 0.06,
+            ),
+            Visibility(
+              visible: globalController.isAdmin.value,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.only(
+                        left: 30,
+                        right: 30,
+                      ),
+                      decoration: const BoxDecoration(
+                        color: Color.fromARGB(255, 81, 79, 79),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(40.0),
+                          topRight: Radius.circular(40),
+                          bottomLeft: Radius.circular(40.0),
+                          bottomRight: Radius.circular(40),
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: Get.height * 0.03,
+                            ),
+                            TextFormField(
+                              style: const TextStyle(color: kAuthThemeColor),
+                              cursorColor: kAuthThemeColor,
+                              keyboardType: TextInputType.emailAddress,
+                              decoration: const InputDecoration(
+                                labelText: "Add a new task",
+                                labelStyle: TextStyle(
+                                    color: Color.fromARGB(255, 163, 126, 243)),
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color.fromARGB(255, 163, 126, 243)),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color:
+                                          Color.fromARGB(255, 163, 126, 243)),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: Get.height * 0.03,
+                            ),
+                            ElevatedButton(
+                              onPressed: () {},
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Color.fromARGB(255, 158, 49, 177)),
+                              ),
+                              child: const Text(
+                                "Add the task",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 15,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            )
           ],
         ),
       ),

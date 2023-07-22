@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justvesit/constants/Constants.dart';
+import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/AuthPages/adminloginpage/controller/AdminPageController.dart';
 import 'package:justvesit/widgets/CustomTextFormField.dart';
 
@@ -20,6 +21,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
   Widget build(BuildContext context) {
     final AdminPageController adminPageController =
         Get.put(AdminPageController());
+    final GlobalController globalController = Get.put(GlobalController());
     return Scaffold(
       body: Container(
         color: kBGColor,
@@ -55,7 +57,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                       height: Get.height * 0.05,
                     ),
                     CustomTextFormField(
-                      text: "Email",
+                      text: "Password",
                       onChanged: (value) {
                         adminPageController.password.value = value;
                       },
@@ -66,6 +68,9 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                   onPressed: () {
                     print(adminPageController.email.value);
                     print(adminPageController.password.value);
+                    globalController.isAdmin.value = true;
+
+                    Get.toNamed('/mainpage');
                   },
                   style: ButtonStyle(
                     backgroundColor:

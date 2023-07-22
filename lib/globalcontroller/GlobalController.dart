@@ -7,4 +7,5 @@ class GlobalController extends GetxController {
   RxString div = "D10C".obs;
   RxString email = "chinmay.chaudhari@gmail.com".obs;
   RxString gender = "Male".obs;
+  RxBool isAdmin = true.obs;
 }
