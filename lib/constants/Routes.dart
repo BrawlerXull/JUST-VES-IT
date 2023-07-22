@@ -3,6 +3,7 @@ import 'package:justvesit/screens/AuthPages/LandingPage/view/LandingPage.dart';
 import 'package:justvesit/screens/AuthPages/adminloginpage/view/AdminLoginPage.dart';
 import 'package:justvesit/screens/AuthPages/loginpage/view/LoginPage.dart';
 import 'package:justvesit/screens/InnerPages/MainPage/view/MainPage.dart';
+import 'package:justvesit/screens/InnerPages/TaskPage/view/TaskPage.dart';
 
 String initialPage = "/mainpage";
 
@@ -22,5 +23,9 @@ List<GetPage> pages = [
   GetPage(
     name: '/adminlogin',
     page: () => const AdminLoginPage(),
+  ),
+  GetPage(
+    name: '/tasks',
+    page: () => TaskPage(),
   ),
 ];

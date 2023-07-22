@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 import 'package:justvesit/screens/InnerPages/HomePage/view/HomePage.dart';
 import 'package:justvesit/screens/InnerPages/ProfilePage/view/ProfilePage.dart';
+import 'package:justvesit/screens/InnerPages/TaskPage/view/TaskPage.dart';
 
 List<GButton> tabs = const [
   GButton(
@@ -9,8 +10,8 @@ List<GButton> tabs = const [
     text: 'Home',
   ),
   GButton(
-    icon: Icons.heart_broken,
-    text: 'Likes',
+    icon: Icons.task,
+    text: 'Tasks',
   ),
   GButton(
     icon: Icons.person,
@@ -20,8 +21,6 @@ List<GButton> tabs = const [
 
 List<Widget> bottomNavScreens = const [
   HomePage(),
-  Text(
-    'Likes',
-  ),
+  TaskPage(),
   ProfilePage(),
 ];

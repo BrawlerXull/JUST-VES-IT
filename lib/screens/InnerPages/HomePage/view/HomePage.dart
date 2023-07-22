@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/constants/UpcomingTaskData.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
+import 'package:justvesit/screens/InnerPages/MainPage/controller/MainPageController.dart';
 import 'package:justvesit/widgets/HomePageUpcomingTaskTile.dart';
 
 class HomePage extends StatefulWidget {
@@ -18,6 +19,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     print(UpcomingTaskData.tasks[0].date);
     final GlobalController globalController = Get.put(GlobalController());
+    final MainPageController mainPageController = Get.put(MainPageController());
     return Scaffold(
       backgroundColor: kBGColor,
       body: Center(
@@ -103,10 +105,15 @@ class _HomePageState extends State<HomePage> {
                           SizedBox(
                             height: 15,
                           ),
-                          Text(
-                            "See more ...",
-                            style: TextStyle(
-                                color: Color.fromARGB(255, 163, 126, 243)),
+                          GestureDetector(
+                            child: Text(
+                              "See more ...",
+                              style: TextStyle(
+                                  color: Color.fromARGB(255, 163, 126, 243)),
+                            ),
+                            onTap: () {
+                              mainPageController.selectedIndex.value = 1;
+                            },
                           ),
                           SizedBox(
                             height: 15,

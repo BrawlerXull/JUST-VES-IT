@@ -32,5 +32,35 @@ class UpcomingTaskData {
       subjectName: "Maths",
       task: "Do the homework",
     ),
+    TaskDataClass(
+      date: DateTime.now(),
+      subjectName: "Physics",
+      task: "Do the homework",
+    ),
+    TaskDataClass(
+      date: DateTime.now(),
+      subjectName: "Chemistry",
+      task: "Do the homework",
+    ),
+    TaskDataClass(
+      date: DateTime.now(),
+      subjectName: "Maths",
+      task: "Do the homework",
+    ),
+    TaskDataClass(
+      date: DateTime.now(),
+      subjectName: "Physics",
+      task: "Do the homework",
+    ),
+    TaskDataClass(
+      date: DateTime.now(),
+      subjectName: "Chemistry",
+      task: "Do the homework",
+    ),
+    TaskDataClass(
+      date: DateTime.now(),
+      subjectName: "Maths",
+      task: "Do the homework",
+    ),
   ];
 }

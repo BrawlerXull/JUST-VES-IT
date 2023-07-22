@@ -44,7 +44,7 @@ class _HomePageUpcomingTaskTileState extends State<HomePageUpcomingTaskTile> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
@@ -74,7 +74,7 @@ class _HomePageUpcomingTaskTileState extends State<HomePageUpcomingTaskTile> {
                   fontSize: 13,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
             ],

@@ -16,15 +16,15 @@ class ProfilePageInfoWidgets extends StatelessWidget {
         ),
         Text(
           title,
-          style: const TextStyle(
-              color: Color.fromARGB(153, 149, 139, 139), fontSize: 20),
+          style: const TextStyle(color: Colors.black, fontSize: 20),
         ),
         const SizedBox(
           height: 10,
         ),
         Text(
           info,
-          style: TextStyle(color: Colors.white60, fontSize: 15),
+          style: const TextStyle(
+              color: Color.fromARGB(255, 230, 222, 222), fontSize: 15),
         ),
       ],
     );
