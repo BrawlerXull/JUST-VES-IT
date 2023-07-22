@@ -22,8 +22,4 @@ class GlobalController extends GetxController {
       task: "Do the homework",
     ),
   ].obs;
-
-  void sortTasksByDate() {
-    tasks.sort((a, b) => a.date.compareTo(b.date));
-  }
 }

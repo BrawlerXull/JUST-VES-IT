@@ -71,11 +71,11 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    const String url = kApiUrl;
+                    const String url = kAuthApiUrl;
 
                     Map<String, dynamic> data = {
-                      "username": "user1",
-                      "password": "password1"
+                      "username": adminPageController.email.value,
+                      "password": adminPageController.password.value
                     };
 
                     try {

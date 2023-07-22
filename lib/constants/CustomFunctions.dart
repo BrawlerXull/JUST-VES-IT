@@ -5,16 +5,16 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:get/route_manager.dart';
+import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/widgets/HomePageUpcomingTaskTile.dart';
 
 class CustomFunction {
+  static final GlobalController globalController = Get.put(GlobalController());
   static void fetchAllTasks() async {
-    final GlobalController globalController = Get.put(GlobalController());
     try {
-      final String url = "http://localhost:5002/all";
+      final String url = kAllApiUrl;
       final response = await http.get(
         Uri.parse(url),
         headers: {
@@ -35,7 +35,6 @@ class CustomFunction {
   }
 
   static void updateTasksFromResponse(List<dynamic> response) {
-    final GlobalController globalController = Get.put(GlobalController());
     List<TaskDataClass> updatedTasks = response.map((taskMap) {
       if (taskMap is Map<String, dynamic>) {
         String subjectName = taskMap['subject'] ?? '';
@@ -57,6 +56,10 @@ class CustomFunction {
       }
     }).toList();
     globalController.tasks.assignAll(updatedTasks);
-    print(globalController.tasks[0].task);
+    sortTasksByDate();
+  }
+
+  static void sortTasksByDate() {
+    globalController.tasks.sort((a, b) => a.date.compareTo(b.date));
   }
 }

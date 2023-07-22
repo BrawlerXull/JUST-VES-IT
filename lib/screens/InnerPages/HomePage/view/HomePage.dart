@@ -232,8 +232,7 @@ class _HomePageState extends State<HomePage> {
                                       task: homePageController.subject.value);
                                   globalController.tasks.add(taskData);
 
-                                  const String url =
-                                      'http://localhost:5002/send';
+                                  const String url = kSendApiUrl;
                                   try {
                                     Map<String, dynamic> data = {
                                       "subject":
