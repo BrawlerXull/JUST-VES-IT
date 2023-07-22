@@ -3,7 +3,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/constants/UpcomingTaskData.dart';
+import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
+import 'package:justvesit/screens/InnerPages/HomePage/controller/HomePageController.dart';
 import 'package:justvesit/screens/InnerPages/MainPage/controller/MainPageController.dart';
 import 'package:justvesit/widgets/CustomTextFormField.dart';
 import 'package:justvesit/widgets/DatePickerHomePage.dart';
@@ -20,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     print(UpcomingTaskData.tasks[0].date);
+    final HomePageController homePageController = Get.put(HomePageController());
     final GlobalController globalController = Get.put(GlobalController());
     final MainPageController mainPageController = Get.put(MainPageController());
     return Scaffold(
@@ -158,6 +161,9 @@ class _HomePageState extends State<HomePage> {
                                 height: Get.height * 0.03,
                               ),
                               TextFormField(
+                                onChanged: (value) {
+                                  homePageController.subject.value = value;
+                                },
                                 style: const TextStyle(color: kAuthThemeColor),
                                 cursorColor: kAuthThemeColor,
                                 keyboardType: TextInputType.emailAddress,
@@ -182,6 +188,9 @@ class _HomePageState extends State<HomePage> {
                                 height: Get.height * 0.03,
                               ),
                               TextFormField(
+                                onChanged: (value) {
+                                  homePageController.description.value = value;
+                                },
                                 style: const TextStyle(color: kAuthThemeColor),
                                 cursorColor: kAuthThemeColor,
                                 keyboardType: TextInputType.emailAddress,
@@ -207,7 +216,15 @@ class _HomePageState extends State<HomePage> {
                               ),
                               DatePickerHomePage(),
                               ElevatedButton(
-                                onPressed: () {},
+                                onPressed: () {
+                                  TaskDataClass taskData = TaskDataClass(
+                                      date: homePageController.date.value,
+                                      subjectName:
+                                          homePageController.subject.value,
+                                      task: homePageController.subject.value);
+                                  UpcomingTaskData.tasks.add(taskData);
+                                  print(UpcomingTaskData.tasks.length);
+                                },
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all<Color>(
