@@ -1,8 +1,10 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:justvesit/constants/Constants.dart';
-import 'package:justvesit/constants/UpcomingTaskData.dart';
 import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/InnerPages/HomePage/controller/HomePageController.dart';
@@ -21,7 +23,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    print(UpcomingTaskData.tasks[0].date);
     final HomePageController homePageController = Get.put(HomePageController());
     final GlobalController globalController = Get.put(GlobalController());
     final MainPageController mainPageController = Get.put(MainPageController());
@@ -98,16 +99,16 @@ class _HomePageState extends State<HomePage> {
                               height: Get.height * 0.02,
                             ),
                             HomePageUpcomingTaskTile(
-                                subject: UpcomingTaskData.tasks[0].subjectName,
-                                task: UpcomingTaskData.tasks[0].task,
-                                date: UpcomingTaskData.tasks[0].date),
+                                subject: globalController.tasks[0].subjectName,
+                                task: globalController.tasks[0].task,
+                                date: globalController.tasks[0].date),
                             const SizedBox(
                               height: 15,
                             ),
                             HomePageUpcomingTaskTile(
-                                subject: UpcomingTaskData.tasks[1].subjectName,
-                                task: UpcomingTaskData.tasks[1].task,
-                                date: UpcomingTaskData.tasks[1].date),
+                                subject: globalController.tasks[1].subjectName,
+                                task: globalController.tasks[1].task,
+                                date: globalController.tasks[1].date),
                             const SizedBox(
                               height: 15,
                             ),
@@ -216,17 +217,47 @@ class _HomePageState extends State<HomePage> {
                               ),
                               DatePickerHomePage(),
                               ElevatedButton(
-                                onPressed: () {
+                                onPressed: () async {
                                   TaskDataClass taskData = TaskDataClass(
                                       date: homePageController.date.value,
                                       subjectName:
                                           homePageController.subject.value,
                                       task: homePageController.subject.value);
-                                  UpcomingTaskData.tasks.add(taskData);
+                                  globalController.tasks.add(taskData);
                                   homePageController.subject.value = "";
                                   homePageController.subject.value = "";
                                   homePageController.date.value =
                                       DateTime.now();
+
+                                  const String url =
+                                      'http://localhost:5002/send';
+
+                                  //hello
+                                  try {
+                                    Map<String, dynamic> data = {
+                                      "subject": "user1",
+                                      "description": "password1",
+                                      "date": DateTime.now().toIso8601String()
+                                    };
+                                    final response = await http.post(
+                                      Uri.parse(url),
+                                      headers: {
+                                        'Content-Type': 'application/json',
+                                      },
+                                      body: jsonEncode(data),
+                                    );
+                                    print(response.statusCode);
+
+                                    if (response.statusCode == 200) {
+                                      print('POST request successful!');
+                                      final responseData =
+                                          jsonDecode(response.body);
+                                    } else {
+                                      Get.snackbar("error", response.body);
+                                    }
+                                  } catch (error) {
+                                    print('Error sending POST request: $error');
+                                  }
                                 },
                                 style: ButtonStyle(
                                   backgroundColor:

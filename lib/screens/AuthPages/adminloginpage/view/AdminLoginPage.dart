@@ -71,9 +71,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                    //ok
-
-                    final String url = kApiUrl;
+                    const String url = kApiUrl;
 
                     Map<String, dynamic> data = {
                       "username": "user1",
