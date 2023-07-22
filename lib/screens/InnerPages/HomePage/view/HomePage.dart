@@ -5,12 +5,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:justvesit/constants/Constants.dart';
-import 'package:justvesit/constants/CustomFunctions.dart';
 import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/InnerPages/HomePage/controller/HomePageController.dart';
 import 'package:justvesit/screens/InnerPages/MainPage/controller/MainPageController.dart';
-import 'package:justvesit/widgets/CustomTextFormField.dart';
 import 'package:justvesit/widgets/DatePickerHomePage.dart';
 import 'package:justvesit/widgets/HomePageUpcomingTaskTile.dart';
 
@@ -253,8 +251,6 @@ class _HomePageState extends State<HomePage> {
 
                                     if (response.statusCode == 200) {
                                       print('POST request successful!');
-                                      final responseData =
-                                          jsonDecode(response.body);
                                     } else {
                                       Get.snackbar("error", response.body);
                                     }

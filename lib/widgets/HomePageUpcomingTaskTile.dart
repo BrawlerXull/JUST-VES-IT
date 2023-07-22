@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/route_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:justvesit/constants/Constants.dart';

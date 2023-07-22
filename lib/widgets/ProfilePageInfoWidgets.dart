@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:justvesit/constants/Constants.dart';
 
 class ProfilePageInfoWidgets extends StatelessWidget {
   final String title;

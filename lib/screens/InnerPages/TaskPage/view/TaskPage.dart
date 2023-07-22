@@ -1,13 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 import 'package:get/route_manager.dart';
 import 'package:justvesit/constants/CustomFunctions.dart';
-import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/widgets/HomePageUpcomingTaskTile.dart';
 
