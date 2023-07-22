@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:justvesit/constants/Constants.dart';
+import 'package:justvesit/constants/CustomFunctions.dart';
 import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/InnerPages/HomePage/controller/HomePageController.dart';
@@ -65,9 +66,12 @@ class _HomePageState extends State<HomePage> {
                         left: 30,
                         right: 30,
                       ),
-                      decoration: const BoxDecoration(
-                        color: Color.fromARGB(255, 81, 79, 79),
-                        borderRadius: BorderRadius.only(
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: const Color.fromARGB(255, 163, 126, 243),
+                          width: 2.0,
+                        ),
+                        borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(40.0),
                           topRight: Radius.circular(40),
                           bottomLeft: Radius.circular(30.0),
@@ -145,9 +149,12 @@ class _HomePageState extends State<HomePage> {
                           left: 30,
                           right: 30,
                         ),
-                        decoration: const BoxDecoration(
-                          color: Color.fromARGB(255, 81, 79, 79),
-                          borderRadius: BorderRadius.only(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color.fromARGB(255, 163, 126, 243),
+                            width: 2.0,
+                          ),
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(40.0),
                             topRight: Radius.circular(40),
                             bottomLeft: Radius.circular(40.0),
@@ -224,20 +231,17 @@ class _HomePageState extends State<HomePage> {
                                           homePageController.subject.value,
                                       task: homePageController.subject.value);
                                   globalController.tasks.add(taskData);
-                                  homePageController.subject.value = "";
-                                  homePageController.subject.value = "";
-                                  homePageController.date.value =
-                                      DateTime.now();
 
                                   const String url =
                                       'http://localhost:5002/send';
-
-                                  //hello
                                   try {
                                     Map<String, dynamic> data = {
-                                      "subject": "user1",
-                                      "description": "password1",
-                                      "date": DateTime.now().toIso8601String()
+                                      "subject":
+                                          homePageController.subject.value,
+                                      "description":
+                                          homePageController.description.value,
+                                      "date": homePageController.date.value
+                                          .toIso8601String()
                                     };
                                     final response = await http.post(
                                       Uri.parse(url),

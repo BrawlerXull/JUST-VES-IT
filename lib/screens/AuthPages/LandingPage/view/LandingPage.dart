@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:justvesit/constants/Constants.dart';
+import 'package:justvesit/constants/CustomFunctions.dart';
 import 'package:justvesit/widgets/RoundedButton.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -12,6 +13,12 @@ class LandingPage extends StatefulWidget {
 }
 
 class _LandingPageState extends State<LandingPage> {
+  @override
+  void initState() {
+    super.initState();
+    CustomFunction.fetchAllTasks();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

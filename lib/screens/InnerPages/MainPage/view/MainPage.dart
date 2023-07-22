@@ -14,6 +14,7 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
   final MainPageController _controller = Get.put(MainPageController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

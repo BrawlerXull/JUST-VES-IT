@@ -21,55 +21,9 @@ class GlobalController extends GetxController {
       subjectName: "Chemistry",
       task: "Do the homework",
     ),
-    TaskDataClass(
-      date: DateTime.now(),
-      subjectName: "Maths",
-      task: "Do the homework",
-    ),
-    TaskDataClass(
-      date: DateTime.now(),
-      subjectName: "Physics",
-      task: "Do the homework",
-    ),
-    TaskDataClass(
-      date: DateTime.now(),
-      subjectName: "Chemistry",
-      task: "Do the homework",
-    ),
-    TaskDataClass(
-      date: DateTime.now(),
-      subjectName: "Maths",
-      task: "Do the homework",
-    ),
-    TaskDataClass(
-      date: DateTime.now(),
-      subjectName: "Physics",
-      task: "Do the homework",
-    ),
-    TaskDataClass(
-      date: DateTime.now(),
-      subjectName: "Chemistry",
-      task: "Do the homework",
-    ),
-    TaskDataClass(
-      date: DateTime.now(),
-      subjectName: "Maths",
-      task: "Do the homework",
-    ),
-    TaskDataClass(
-      date: DateTime.now(),
-      subjectName: "Physics",
-      task: "Do the homework",
-    ),
-    TaskDataClass(
-      date: DateTime.now(),
-      subjectName: "Chemistry",
-      task: "Do the homework",
-    ),
-    TaskDataClass(
-      date: DateTime.now(),
-      subjectName: "Maths",
-      task: "Do the homework",
-    ),
   ].obs;
+
+  void sortTasksByDate() {
+    tasks.sort((a, b) => a.date.compareTo(b.date));
+  }
 }
