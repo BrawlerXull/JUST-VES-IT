@@ -66,10 +66,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    print(adminPageController.email.value);
-                    print(adminPageController.password.value);
                     globalController.isAdmin.value = true;
-
                     Get.toNamed('/mainpage');
                   },
                   style: ButtonStyle(

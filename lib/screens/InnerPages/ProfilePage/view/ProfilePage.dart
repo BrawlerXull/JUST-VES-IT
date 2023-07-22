@@ -84,6 +84,24 @@ class _ProfilePageState extends State<ProfilePage> {
                           const SizedBox(
                             height: 40,
                           ),
+                          Align(
+                            child: ElevatedButton(
+                              onPressed: () {
+                                globalController.isAdmin.value = true;
+
+                                Get.toNamed('/landing');
+                              },
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        Colors.purple),
+                              ),
+                              child: const Text(
+                                "Log Out!",
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                          ),
                         ],
                       ),
                     ),
