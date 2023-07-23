@@ -54,7 +54,7 @@ class _LandingPageState extends State<LandingPage> {
             ),
             textAlign: TextAlign.center,
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.75,
             child: RoundButton(
               text: 'Admin Login',
@@ -65,7 +65,7 @@ class _LandingPageState extends State<LandingPage> {
               },
             ),
           ),
-          Container(
+          SizedBox(
             width: MediaQuery.of(context).size.width * 0.75,
             child: RoundButton(
               color: Colors.white,

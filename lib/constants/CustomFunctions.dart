@@ -1,20 +1,16 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
-import 'package:justvesit/widgets/HomePageUpcomingTaskTile.dart';
 
 class CustomFunction {
   static final GlobalController globalController = Get.put(GlobalController());
   static void fetchAllTasks() async {
     try {
-      final String url = kAllApiUrl;
+      const String url = kAllApiUrl;
       final response = await http.get(
         Uri.parse(url),
         headers: {

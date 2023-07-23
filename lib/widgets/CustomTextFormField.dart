@@ -7,7 +7,7 @@ class CustomTextFormField extends StatefulWidget {
   final String text;
   final Function(String) onChanged;
 
-  const CustomTextFormField({
+  const CustomTextFormField({super.key, 
     required this.text,
     required this.onChanged,
   });
@@ -19,7 +19,7 @@ class CustomTextFormField extends StatefulWidget {
 class _CustomTextFormFieldState extends State<CustomTextFormField> {
   final AdminPageController adminPageController =
       Get.put(AdminPageController());
-  TextEditingController _controller = TextEditingController();
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {

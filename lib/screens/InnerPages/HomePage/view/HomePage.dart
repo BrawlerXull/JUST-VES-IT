@@ -77,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Column(
                           children: [
                             SizedBox(
@@ -160,7 +160,7 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ),
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.symmetric(horizontal: 20),
                           child: Column(
                             children: [
                               SizedBox(
@@ -220,7 +220,7 @@ class _HomePageState extends State<HomePage> {
                               SizedBox(
                                 height: Get.height * 0.03,
                               ),
-                              DatePickerHomePage(),
+                              const DatePickerHomePage(),
                               ElevatedButton(
                                 onPressed: () async {
                                   TaskDataClass taskData = TaskDataClass(
@@ -261,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                                 style: ButtonStyle(
                                   backgroundColor:
                                       MaterialStateProperty.all<Color>(
-                                          Color.fromARGB(255, 158, 49, 177)),
+                                          const Color.fromARGB(255, 158, 49, 177)),
                                 ),
                                 child: const Text(
                                   "Add the task",

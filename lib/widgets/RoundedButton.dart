@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class RoundButton extends StatelessWidget {
   const RoundButton(
-      {required this.color,
+      {super.key, required this.color,
       required this.onPressed,
       required this.text,
       required this.textColor});
@@ -15,7 +15,7 @@ class RoundButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
         backgroundColor: color,
         shape: RoundedRectangleBorder(
             borderRadius: BorderRadiusDirectional.circular(30)),

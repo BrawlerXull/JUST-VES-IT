@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 import 'package:justvesit/constants/CustomFunctions.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/widgets/HomePageUpcomingTaskTile.dart';
@@ -43,7 +41,7 @@ class _TaskPageState extends State<TaskPage> {
             height: 10,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
+            padding: const EdgeInsets.symmetric(horizontal: 30),
             child: Obx(
               () => ListView.builder(
                 physics: const ClampingScrollPhysics(),

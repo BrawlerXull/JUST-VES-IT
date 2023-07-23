@@ -4,7 +4,7 @@ class ProfilePageInfoWidgets extends StatelessWidget {
   final String title;
   final String info;
 
-  const ProfilePageInfoWidgets({required this.title, required this.info});
+  const ProfilePageInfoWidgets({super.key, required this.title, required this.info});
 
   @override
   Widget build(BuildContext context) {

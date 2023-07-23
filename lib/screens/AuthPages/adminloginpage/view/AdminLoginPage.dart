@@ -1,9 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:justvesit/constants/Constants.dart';
@@ -70,6 +68,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                 ),
                 ElevatedButton(
                   onPressed: () async {
+                    print("pressedyfcugvjhvhvb");
                     const String url = kAuthApiUrl;
 
                     Map<String, dynamic> data = {
@@ -78,6 +77,7 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                     };
 
                     try {
+                      print("ok1");
                       final response = await http.post(
                         Uri.parse(url),
                         headers: {
@@ -102,6 +102,8 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                             'POST request failed with status: ${response.statusCode}');
                       }
                     } catch (error) {
+                      print("ok");
+                      Get.snackbar("Error", error.toString());
                       print('Error sending POST request: $error');
                     }
                   },

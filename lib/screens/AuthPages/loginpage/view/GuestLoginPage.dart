@@ -4,11 +4,6 @@ import 'package:justvesit/constants/Constants.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/AuthPages/loginpage/controller/GuestLoginPageController.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:get/get.dart';
-import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/widgets/CustomTextFormField.dart';
 
 class GuestLoginPage extends StatefulWidget {
