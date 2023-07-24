@@ -7,9 +7,14 @@ class HomePageUpcomingTaskTile extends StatefulWidget {
   final String subject;
   final DateTime date;
   final String task;
+  final String id;
 
   const HomePageUpcomingTaskTile(
-      {required this.subject, required this.task, required this.date, Key? key})
+      {required this.subject,
+      required this.task,
+      required this.date,
+      required this.id,
+      Key? key})
       : super(key: key);
 
   @override

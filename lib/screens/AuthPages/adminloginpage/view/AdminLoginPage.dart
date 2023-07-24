@@ -77,7 +77,6 @@ class _AdminLoginPageState extends State<AdminLoginPage> {
                     };
 
                     try {
-                      print("ok1");
                       final response = await http.post(
                         Uri.parse(url),
                         headers: {

@@ -28,7 +28,7 @@ class _LandingPageState extends State<LandingPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           SizedBox(
-            height: Get.height * 0.03,
+            height: Get.height * 0.01,
           ),
           Align(
             child: SvgPicture.asset(

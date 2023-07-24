@@ -29,7 +29,7 @@ class _TaskPageState extends State<TaskPage> {
             height: 30,
           ),
           Text(
-            "Hey ${globalController.name.value}!\nYou have ${globalController.tasks.length} tasks scheduled today",
+            "Hey ${globalController.name.value}!\nYou have ${globalController.tasks.length} tasks scheduled",
             textAlign: TextAlign.center,
             style: const TextStyle(
               color: Color.fromARGB(255, 230, 226, 226),
@@ -52,6 +52,7 @@ class _TaskPageState extends State<TaskPage> {
                   return Padding(
                     padding: const EdgeInsets.only(top: 30),
                     child: HomePageUpcomingTaskTile(
+                      id: task.id,
                       subject: task.subjectName,
                       task: task.task,
                       date: task.date,

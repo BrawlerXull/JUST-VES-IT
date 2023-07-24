@@ -12,11 +12,13 @@ class GlobalController extends GetxController {
 
   RxList<TaskDataClass> tasks = [
     TaskDataClass(
+      id: '0',
       date: DateTime.now(),
       subjectName: "Physics",
       task: "Do the homework",
     ),
     TaskDataClass(
+      id: '1',
       date: DateTime.now(),
       subjectName: "Chemistry",
       task: "Do the homework",

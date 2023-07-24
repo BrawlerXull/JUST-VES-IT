@@ -35,16 +35,19 @@ class CustomFunction {
       if (taskMap is Map<String, dynamic>) {
         String subjectName = taskMap['subject'] ?? '';
         String task = taskMap['description'] ?? '';
+        String id = taskMap['_id'] ?? '';
         DateTime date =
             DateTime.tryParse(taskMap['date'] ?? '') ?? DateTime.now();
 
         return TaskDataClass(
+          id: id,
           subjectName: subjectName,
           task: task,
           date: date,
         );
       } else {
         return TaskDataClass(
+          id: '',
           subjectName: '',
           task: '',
           date: DateTime.now(),
@@ -57,5 +60,6 @@ class CustomFunction {
 
   static void sortTasksByDate() {
     globalController.tasks.sort((a, b) => a.date.compareTo(b.date));
+    print(globalController.tasks[0].id);
   }
 }

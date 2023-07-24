@@ -22,6 +22,8 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final TextEditingController subjectController = TextEditingController();
+    final TextEditingController descriptionController = TextEditingController();
     final HomePageController homePageController = Get.put(HomePageController());
     final GlobalController globalController = Get.put(GlobalController());
     final MainPageController mainPageController = Get.put(MainPageController());
@@ -32,6 +34,9 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              SizedBox(
+                height: Get.height * 0.04,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -101,6 +106,7 @@ class _HomePageState extends State<HomePage> {
                               height: Get.height * 0.02,
                             ),
                             HomePageUpcomingTaskTile(
+                                id: globalController.tasks[0].id,
                                 subject: globalController.tasks[0].subjectName,
                                 task: globalController.tasks[0].task,
                                 date: globalController.tasks[0].date),
@@ -108,6 +114,7 @@ class _HomePageState extends State<HomePage> {
                               height: 15,
                             ),
                             HomePageUpcomingTaskTile(
+                                id: globalController.tasks[1].id,
                                 subject: globalController.tasks[1].subjectName,
                                 task: globalController.tasks[1].task,
                                 date: globalController.tasks[1].date),
@@ -166,7 +173,25 @@ class _HomePageState extends State<HomePage> {
                               SizedBox(
                                 height: Get.height * 0.03,
                               ),
+                              const Padding(
+                                padding: EdgeInsets.only(left: 20),
+                                child: Align(
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    "Add a Task",
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.white70,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: Get.height * 0.03,
+                              ),
                               TextFormField(
+                                controller: subjectController,
                                 onChanged: (value) {
                                   homePageController.subject.value = value;
                                 },
@@ -194,6 +219,7 @@ class _HomePageState extends State<HomePage> {
                                 height: Get.height * 0.03,
                               ),
                               TextFormField(
+                                controller: descriptionController,
                                 onChanged: (value) {
                                   homePageController.description.value = value;
                                 },
@@ -224,6 +250,7 @@ class _HomePageState extends State<HomePage> {
                               ElevatedButton(
                                 onPressed: () async {
                                   TaskDataClass taskData = TaskDataClass(
+                                      id: homePageController.id.value,
                                       date: homePageController.date.value,
                                       subjectName:
                                           homePageController.subject.value,
@@ -251,6 +278,12 @@ class _HomePageState extends State<HomePage> {
 
                                     if (response.statusCode == 200) {
                                       print('POST request successful!');
+                                      Get.snackbar("Confirmation",
+                                          "Your task has been successfully added.");
+                                      subjectController.text = "";
+                                      descriptionController.text = "";
+                                      homePageController.date.value =
+                                          DateTime.now();
                                     } else {
                                       Get.snackbar("error", response.body);
                                     }
@@ -259,9 +292,9 @@ class _HomePageState extends State<HomePage> {
                                   }
                                 },
                                 style: ButtonStyle(
-                                  backgroundColor:
-                                      MaterialStateProperty.all<Color>(
-                                          const Color.fromARGB(255, 158, 49, 177)),
+                                  backgroundColor: MaterialStateProperty.all<
+                                          Color>(
+                                      const Color.fromARGB(255, 158, 49, 177)),
                                 ),
                                 child: const Text(
                                   "Add the task",
