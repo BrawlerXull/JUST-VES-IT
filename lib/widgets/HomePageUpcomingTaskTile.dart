@@ -81,7 +81,12 @@ class _HomePageUpcomingTaskTileState extends State<HomePageUpcomingTaskTile> {
                 height: 20,
               ),
             ],
-          )
+          ),
+          const Spacer(),
+          const Icon(
+            Icons.delete_forever,
+            color: kAuthThemeColor,
+          ),
         ],
       ),
     );
