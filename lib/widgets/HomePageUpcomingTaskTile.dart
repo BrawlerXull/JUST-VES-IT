@@ -93,32 +93,8 @@ class _HomePageUpcomingTaskTileState extends State<HomePageUpcomingTaskTile> {
           Visibility(
             visible: globalController.isAdmin.value,
             child: GestureDetector(
-              onTap: () async {
-                try {
-                  Map<String, dynamic> data = {
-                    "_id": widget.id,
-                  };
-                  final response = await http.post(
-                    Uri.parse(kDeleteApiUrl),
-                    headers: {
-                      'Content-Type': 'application/json',
-                    },
-                    body: jsonEncode(data),
-                  );
-                  print(response.statusCode);
-
-                  if (response.statusCode == 200) {
-                    print('POST request successful!');
-
-                    CustomFunction.fetchAllTasks();
-                    Get.snackbar("Confirmation",
-                        "Your task has been successfully deleted.");
-                  } else {
-                    Get.snackbar("error", response.body);
-                  }
-                } catch (error) {
-                  print('Error sending POST request: $error');
-                }
+              onTap: () {
+                CustomFunction.deleteTheTask(widget.id);
               },
               child: const Icon(
                 Icons.delete_forever,

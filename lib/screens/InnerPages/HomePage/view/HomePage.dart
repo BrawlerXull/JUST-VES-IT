@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:justvesit/constants/Constants.dart';
+import 'package:justvesit/constants/CustomFunctions.dart';
 import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/InnerPages/HomePage/controller/HomePageController.dart';
@@ -246,48 +247,13 @@ class _HomePageState extends State<HomePage> {
                               ),
                               const DatePickerHomePage(),
                               ElevatedButton(
-                                onPressed: () async {
-                                  TaskDataClass taskData = TaskDataClass(
-                                      id: homePageController.id.value,
-                                      date: homePageController.date.value,
-                                      subjectName:
-                                          homePageController.subject.value,
-                                      task: homePageController.subject.value);
-                                  globalController.tasks.add(taskData);
+                                onPressed: () {
+                                  CustomFunction.addTheTask();
 
-                                  const String url = kSendApiUrl;
-                                  try {
-                                    Map<String, dynamic> data = {
-                                      "subject":
-                                          homePageController.subject.value,
-                                      "description":
-                                          homePageController.description.value,
-                                      "date": homePageController.date.value
-                                          .toIso8601String()
-                                    };
-                                    final response = await http.post(
-                                      Uri.parse(url),
-                                      headers: {
-                                        'Content-Type': 'application/json',
-                                      },
-                                      body: jsonEncode(data),
-                                    );
-                                    print(response.statusCode);
-
-                                    if (response.statusCode == 200) {
-                                      print('POST request successful!');
-                                      Get.snackbar("Confirmation",
-                                          "Your task has been successfully added.");
-                                      subjectController.text = "";
-                                      descriptionController.text = "";
-                                      homePageController.date.value =
-                                          DateTime.now();
-                                    } else {
-                                      Get.snackbar("error", response.body);
-                                    }
-                                  } catch (error) {
-                                    print('Error sending POST request: $error');
-                                  }
+                                  subjectController.text = "";
+                                  descriptionController.text = "";
+                                  homePageController.date.value =
+                                      DateTime.now();
                                 },
                                 style: ButtonStyle(
                                   backgroundColor: MaterialStateProperty.all<

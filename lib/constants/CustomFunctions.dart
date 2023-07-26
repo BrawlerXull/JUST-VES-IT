@@ -5,9 +5,13 @@ import 'package:http/http.dart' as http;
 import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
+import 'package:justvesit/screens/InnerPages/HomePage/controller/HomePageController.dart';
 
 class CustomFunction {
   static final GlobalController globalController = Get.put(GlobalController());
+  static final HomePageController homePageController =
+      Get.put(HomePageController());
+
   static void fetchAllTasks() async {
     try {
       const String url = kAllApiUrl;
@@ -27,6 +31,69 @@ class CustomFunction {
       }
     } catch (error) {
       print('Error sending GET request: $error');
+    }
+  }
+
+  static void deleteTheTask(String id) async {
+    try {
+      Map<String, dynamic> data = {
+        "_id": id,
+      };
+      final response = await http.post(
+        Uri.parse(kDeleteApiUrl),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(data),
+      );
+      print(response.statusCode);
+
+      if (response.statusCode == 200) {
+        print('POST request successful!');
+
+        CustomFunction.fetchAllTasks();
+        Get.snackbar(
+            "Confirmation", "Your task has been successfully deleted.");
+      } else {
+        Get.snackbar("error", response.body);
+      }
+    } catch (error) {
+      print('Error sending POST request: $error');
+    }
+  }
+
+  static void addTheTask() async {
+    TaskDataClass taskData = TaskDataClass(
+        id: homePageController.id.value,
+        date: homePageController.date.value,
+        subjectName: homePageController.subject.value,
+        task: homePageController.subject.value);
+    globalController.tasks.add(taskData);
+
+    const String url = kSendApiUrl;
+    try {
+      Map<String, dynamic> data = {
+        "subject": homePageController.subject.value,
+        "description": homePageController.description.value,
+        "date": homePageController.date.value.toIso8601String()
+      };
+      final response = await http.post(
+        Uri.parse(url),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: jsonEncode(data),
+      );
+      print(response.statusCode);
+
+      if (response.statusCode == 200) {
+        print('POST request successful!');
+        Get.snackbar("Confirmation", "Your task has been successfully added.");
+      } else {
+        Get.snackbar("error", response.body);
+      }
+    } catch (error) {
+      print('Error sending POST request: $error');
     }
   }
 
@@ -60,6 +127,5 @@ class CustomFunction {
 
   static void sortTasksByDate() {
     globalController.tasks.sort((a, b) => a.date.compareTo(b.date));
-    print(globalController.tasks[0].id);
   }
 }
