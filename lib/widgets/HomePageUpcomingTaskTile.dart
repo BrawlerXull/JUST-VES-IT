@@ -1,7 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:justvesit/constants/Constants.dart';
+import 'package:http/http.dart' as http;
+import 'package:justvesit/constants/CustomFunctions.dart';
+import 'package:justvesit/globalcontroller/GlobalController.dart';
 
 class HomePageUpcomingTaskTile extends StatefulWidget {
   final String subject;
@@ -25,6 +31,7 @@ class HomePageUpcomingTaskTile extends StatefulWidget {
 class _HomePageUpcomingTaskTileState extends State<HomePageUpcomingTaskTile> {
   @override
   Widget build(BuildContext context) {
+    final GlobalController globalController = Get.put(GlobalController());
     final DateFormat dateFormat = DateFormat('EEEE, d MMMM');
     return Container(
       child: Row(
@@ -83,9 +90,41 @@ class _HomePageUpcomingTaskTileState extends State<HomePageUpcomingTaskTile> {
             ],
           ),
           const Spacer(),
-          const Icon(
-            Icons.delete_forever,
-            color: kAuthThemeColor,
+          Visibility(
+            visible: globalController.isAdmin.value,
+            child: GestureDetector(
+              onTap: () async {
+                try {
+                  Map<String, dynamic> data = {
+                    "_id": widget.id,
+                  };
+                  final response = await http.post(
+                    Uri.parse(kDeleteApiUrl),
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    body: jsonEncode(data),
+                  );
+                  print(response.statusCode);
+
+                  if (response.statusCode == 200) {
+                    print('POST request successful!');
+
+                    CustomFunction.fetchAllTasks();
+                    Get.snackbar("Confirmation",
+                        "Your task has been successfully deleted.");
+                  } else {
+                    Get.snackbar("error", response.body);
+                  }
+                } catch (error) {
+                  print('Error sending POST request: $error');
+                }
+              },
+              child: const Icon(
+                Icons.delete_forever,
+                color: kAuthThemeColor,
+              ),
+            ),
           ),
         ],
       ),
