@@ -1,12 +1,8 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/constants/CustomFunctions.dart';
-import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/InnerPages/HomePage/controller/HomePageController.dart';
 import 'package:justvesit/screens/InnerPages/MainPage/controller/MainPageController.dart';
@@ -90,7 +86,7 @@ class _HomePageState extends State<HomePage> {
                               height: Get.height * 0.03,
                             ),
                             const Padding(
-                              padding: EdgeInsets.only(left: 20),
+                              padding: EdgeInsets.only(left: 15),
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
@@ -107,16 +103,23 @@ class _HomePageState extends State<HomePage> {
                               height: Get.height * 0.02,
                             ),
                             globalController.tasks.isEmpty
-                                ? const Text(
-                                    "No tasks schedules",
-                                    style: TextStyle(color: kAuthThemeColor),
+                                ? const Padding(
+                                    padding: EdgeInsets.only(left: 20),
+                                    child: Align(
+                                      alignment: Alignment.centerLeft,
+                                      child: Text(
+                                        "No tasks schedules",
+                                        style:
+                                            TextStyle(color: kAuthThemeColor),
+                                      ),
+                                    ),
                                   )
-                                : HomePageUpcomingTaskTile(
+                                : Obx(() => HomePageUpcomingTaskTile(
                                     id: globalController.tasks[0].id,
                                     subject:
                                         globalController.tasks[0].subjectName,
                                     task: globalController.tasks[0].task,
-                                    date: globalController.tasks[0].date),
+                                    date: globalController.tasks[0].date)),
                             const SizedBox(
                               height: 15,
                             ),

@@ -1,16 +1,35 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/InnerPages/HomePage/controller/HomePageController.dart';
+import 'package:justvesit/screens/InnerPages/MainPage/controller/MainPageController.dart';
 
 class CustomFunction {
   static final GlobalController globalController = Get.put(GlobalController());
   static final HomePageController homePageController =
       Get.put(HomePageController());
+  static final MainPageController mainPageController =
+      Get.put(MainPageController());
+
+  static Future<void> selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null) {
+      homePageController.date.value = picked;
+    } else {
+      Get.snackbar("Error", "Selected date");
+    }
+  }
 
   static void fetchAllTasks() async {
     try {
@@ -127,5 +146,17 @@ class CustomFunction {
 
   static void sortTasksByDate() {
     globalController.tasks.sort((a, b) => a.date.compareTo(b.date));
+  }
+
+  static void logoutButtonClicked() {
+    globalController.branch.value = "";
+    globalController.name.value = "";
+    globalController.email.value = "";
+    globalController.college.value = "";
+    globalController.div.value = "";
+    globalController.gender.value = "";
+    mainPageController.selectedIndex.value = 0;
+
+    Get.toNamed('/landing');
   }
 }

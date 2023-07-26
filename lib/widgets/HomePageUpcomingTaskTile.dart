@@ -1,11 +1,8 @@
-import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:justvesit/constants/Constants.dart';
-import 'package:http/http.dart' as http;
 import 'package:justvesit/constants/CustomFunctions.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 

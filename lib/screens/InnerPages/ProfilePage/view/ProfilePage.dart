@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:justvesit/constants/Constants.dart';
+import 'package:justvesit/constants/CustomFunctions.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/InnerPages/MainPage/controller/MainPageController.dart';
 import 'package:justvesit/widgets/ProfilePageInfoWidgets.dart';
@@ -16,7 +17,6 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
-    final MainPageController mainPageController = Get.put(MainPageController());
     final GlobalController globalController = Get.put(GlobalController());
     return Scaffold(
       backgroundColor: kBGColor,
@@ -109,15 +109,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             Align(
                               child: ElevatedButton(
                                 onPressed: () {
-                                  globalController.branch.value = "";
-                                  globalController.name.value = "";
-                                  globalController.email.value = "";
-                                  globalController.college.value = "";
-                                  globalController.div.value = "";
-                                  globalController.gender.value = "";
-                                  mainPageController.selectedIndex.value = 0;
-
-                                  Get.toNamed('/landing');
+                                  CustomFunction.logoutButtonClicked();
                                 },
                                 style: ButtonStyle(
                                   backgroundColor:
