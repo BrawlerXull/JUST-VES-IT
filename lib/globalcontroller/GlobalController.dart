@@ -2,26 +2,12 @@ import 'package:get/get.dart';
 import 'package:justvesit/customClass/TaskDataClass.dart';
 
 class GlobalController extends GetxController {
-  RxString name = "Chinmay".obs;
-  RxString college = "VESIT".obs;
-  RxString branch = "IT".obs;
-  RxString div = "D10C".obs;
-  RxString email = "chinmay.chaudhari@gmail.com".obs;
-  RxString gender = "Male".obs;
+  RxString name = "".obs;
+  RxString college = "".obs;
+  RxString branch = "".obs;
+  RxString div = "".obs;
+  RxString email = "".obs;
+  RxString gender = "".obs;
   RxBool isAdmin = true.obs;
-
-  RxList<TaskDataClass> tasks = [
-    TaskDataClass(
-      id: '0',
-      date: DateTime.now(),
-      subjectName: "Physics",
-      task: "Do the homework",
-    ),
-    TaskDataClass(
-      id: '1',
-      date: DateTime.now(),
-      subjectName: "Chemistry",
-      task: "Do the homework",
-    ),
-  ].obs;
+  RxList<TaskDataClass> tasks = <TaskDataClass>[].obs;
 }

@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: Text(
-                                  "Upcoming Tasks",
+                                  "Upcoming Task",
                                   style: TextStyle(
                                     fontSize: 20,
                                     color: Colors.white70,
@@ -105,19 +105,17 @@ class _HomePageState extends State<HomePage> {
                             SizedBox(
                               height: Get.height * 0.02,
                             ),
-                            HomePageUpcomingTaskTile(
-                                id: globalController.tasks[0].id,
-                                subject: globalController.tasks[0].subjectName,
-                                task: globalController.tasks[0].task,
-                                date: globalController.tasks[0].date),
-                            const SizedBox(
-                              height: 15,
-                            ),
-                            HomePageUpcomingTaskTile(
-                                id: globalController.tasks[1].id,
-                                subject: globalController.tasks[1].subjectName,
-                                task: globalController.tasks[1].task,
-                                date: globalController.tasks[1].date),
+                            globalController.tasks.isEmpty
+                                ? const Text(
+                                    "No tasks schedules",
+                                    style: TextStyle(color: kAuthThemeColor),
+                                  )
+                                : HomePageUpcomingTaskTile(
+                                    id: globalController.tasks[0].id,
+                                    subject:
+                                        globalController.tasks[0].subjectName,
+                                    task: globalController.tasks[0].task,
+                                    date: globalController.tasks[0].date),
                             const SizedBox(
                               height: 15,
                             ),
