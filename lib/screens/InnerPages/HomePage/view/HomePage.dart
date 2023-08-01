@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               SizedBox(
-                height: Get.height * 0.04,
+                height: Get.height * 0.03,
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -55,8 +55,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
-              const SizedBox(
-                height: 70,
+              SizedBox(
+                height: Get.height * 0.03,
               ),
               Row(
                 children: [
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
               SizedBox(
-                height: Get.height * 0.06,
+                height: Get.height * 0.04,
               ),
               Visibility(
                 visible: globalController.isAdmin.value,
@@ -252,6 +252,7 @@ class _HomePageState extends State<HomePage> {
                               ElevatedButton(
                                 onPressed: () {
                                   CustomFunction.addTheTask();
+                                  CustomFunction.fetchAllTasks();
 
                                   subjectController.text = "";
                                   descriptionController.text = "";

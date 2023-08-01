@@ -17,6 +17,7 @@ class _LandingPageState extends State<LandingPage> {
   void initState() {
     super.initState();
     CustomFunction.fetchAllTasks();
+    // CustomFunction.connectToWebSocket();
   }
 
   @override

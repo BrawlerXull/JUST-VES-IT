@@ -8,6 +8,8 @@ import 'package:justvesit/customClass/TaskDataClass.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
 import 'package:justvesit/screens/InnerPages/HomePage/controller/HomePageController.dart';
 import 'package:justvesit/screens/InnerPages/MainPage/controller/MainPageController.dart';
+import 'package:web_socket_channel/io.dart';
+import 'package:web_socket_channel/web_socket_channel.dart';
 
 class CustomFunction {
   static final GlobalController globalController = Get.put(GlobalController());
@@ -158,5 +160,31 @@ class CustomFunction {
     mainPageController.selectedIndex.value = 0;
 
     Get.toNamed('/landing');
+  }
+
+  static Future<void> connectToWebSocket() async {
+    try {
+      final WebSocketChannel channel = IOWebSocketChannel.connect(
+        Uri.parse("ws://localhost:5002/"),
+      );
+
+      print('WebSocket connection established');
+
+      channel.sink.add('Hello, WebSocket Server!');
+
+      await channel.stream.listen(
+        (message) {
+          print('Received: $message');
+        },
+        onError: (error) {
+          print('Error: $error');
+        },
+        onDone: () {
+          print('WebSocket closed');
+        },
+      ).asFuture();
+    } catch (e) {
+      print('Error: $e');
+    }
   }
 }
