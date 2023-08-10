@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:justvesit/customClass/TaskDataClass.dart';
+import 'package:justvesit/customClass/ToDoDataClass.dart';
 
 class GlobalController extends GetxController {
   RxString name = "".obs;
@@ -10,4 +11,5 @@ class GlobalController extends GetxController {
   RxString gender = "".obs;
   RxBool isAdmin = true.obs;
   RxList<TaskDataClass> tasks = <TaskDataClass>[].obs;
+  RxList<ToDoDataClass> todos = <ToDoDataClass>[].obs;
 }
