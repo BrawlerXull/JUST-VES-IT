@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:justvesit/constants/Constants.dart';
 import 'package:justvesit/constants/CustomFunctions.dart';
 import 'package:justvesit/globalcontroller/GlobalController.dart';
+import 'package:justvesit/screens/InnerPages/MainPage/controller/MainPageController.dart';
 import 'package:justvesit/widgets/ProfilePageInfoWidgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
